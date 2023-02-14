@@ -1,0 +1,67 @@
+body {
+    background-color: azure;
+    background-image: url("baba_fall_background.png");
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 30px;
+    min-width: 750px;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.664);
+}
+
+table, th, td {
+    border:1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    margin: 5px;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+div{
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.664);
+}
+
+article {
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 30px;
+    background: rgba(22, 63, 241, 0.24);
+    background-image: url("baba_background.png");
+    color:azure;
+    /* Gives the text a drop shadow/outline to make it more readable*/
+    /* With instructions from https://www.codesdope.com/blog/article/adding-outline-to-text-using-css/*/
+    text-shadow: -1px 1px 2px #191322,
+                  1px 1px 2px #191322,
+                  1px -1px 2px #191322,
+                 -1px -1px 2px #191322;
+  
+    box-sizing: border-box;
+    border: 2px solid black;
+    width: 700px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+iframe{
+    border: 2px solid black; 
+    min-height: 700px;
+    max-width: 100%;
+    margin: 10px;
+}
+
+video{
+    border: 2px solid black;
+}
+.character_section {
+    position: relative
+}
+
+.character_heading {
+    text-align: center;
+}
