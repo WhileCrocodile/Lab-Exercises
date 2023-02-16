@@ -36,9 +36,7 @@ body {
     /* Very helpful for keeping a consistent section width */
     margin: auto;
     min-width: 770px;
-    max-width: 60%;
-
-    
+    max-width: 900px;
 }
 
 /* Table */
