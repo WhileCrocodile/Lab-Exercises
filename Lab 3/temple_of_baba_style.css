@@ -1,0 +1,151 @@
+/* Additional CSS Styling elements: 
+    table, th, td:
+        * border-collapse:  converts the default double-walled tables 
+                            into single-walled tables
+    
+    body, div, etc...:
+        * mid-width:    ensures sections do not shrink so much that elements 
+                        inside begin clipping out
+        * max-width:    ensures sections do not become too wide
+
+    .pixel_art:
+        * image-rendering:  set to pixelated so the pixel arts of baba, 
+                            keke, and ghost do not become blurry when scaled up
+
+    .character_card:
+        * text-shadow:  adds a drop shadow/outline/border to text to make it more
+                        readable against a dark background
+    
+    video:
+        * display:      set to 'block" to change inline elements to block elements
+                        this allows "margin: auto" to center the element
+        * object-fit:   set to "cover" to get rid of some strange whitespace around the
+                        video and its border...
+*/      
+
+/* ===================== */
+/* Global selectors here */
+/* ===================== */
+
+body {
+    background-color:rgb(114, 62, 13);
+    background-image: url("baba_fall_background.png");
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+    /* Apparently setting these in body applies these settings to all child elements of body? */
+    /* Very helpful for keeping a consistent section width */
+    margin: auto;
+    min-width: 770px;
+    max-width: 60%;
+
+    
+}
+
+/* Table */
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    margin: 5px;
+}
+
+div {
+    background-color: rgba(255, 255, 255, 0.664);
+}
+
+video {
+    border: 2px solid black;
+    margin: auto;
+    display: block;
+    object-fit: cover;
+}
+
+hr{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* ============================================ */
+/* Local selectors here (except for the body id) */
+/* ============================================ */
+
+/* =============*/
+/* Classes here */
+/* =============*/
+
+.title_section {
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.title {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.generic_section {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.664);
+    margin: auto;
+    
+}
+.text_section {
+    padding: 30px;
+    padding-top: 20px;
+    background-color: rgba(255, 255, 255, 0.664);
+    margin: auto;
+}
+
+.characters_section {
+    position: relative;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.664);
+    margin: auto;
+}
+
+.char_section_heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section_heading {
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.pixel_art {
+    image-rendering: pixelated;
+}
+
+.character_card {
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 30px;
+    width: 650px;
+    border: 2px solid black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background: rgba(22, 63, 241, 0.24);
+    background-image: url("baba_background.png");
+    color:azure;
+    /* Gives the text a drop shadow/outline to make it more readable*/
+    /* With instructions from https://www.codesdope.com/blog/article/adding-outline-to-text-using-css/*/
+    text-shadow: -1px 1px 2px #191322,
+                  1px 1px 2px #191322,
+                  1px -1px 2px #191322,
+                 -1px -1px 2px #191322;
+}
+
+/* ======== */
+/* IDs here */
+/* ======== */
+
+#wiki_window {
+    border: 2px solid black; 
+    min-height: 700px;
+    max-width: 100%;
+    margin: auto;
+    display: block;
+}
