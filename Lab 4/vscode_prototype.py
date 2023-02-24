@@ -3,18 +3,39 @@ import requests
 import html5lib
 import csv
 
-# Isolate the title, the date of release, and one other element of your choosing. (3pts)
-# Put the data into a csv. (2pts)
-
-imbd = requests.get("https://www.imdb.com/list/ls055592025/").text
-soup = BeautifulSoup(imbd, "lxml")
-
-csv_file = open("imbd_movies.csv", "w", newline="", encoding="utf-8")
+csv_file = open("congress_cats.csv", "w", newline="", encoding="utf-8")
 csv_writer = csv.writer(csv_file)
-csv_writer.writerow(["title", "year of release", "rating"])
+csv_writer.writerow(["title", "item description", "hyperlink", "contributor", "date"])
 
-for movie in soup.find_all("div", class_="lister-item mode-detail"):
-    title = movie.find("h3", class_="lister-item-header").a.text
-    released = movie.find("span", class_="lister-item-year text-muted unbold").text[1:5] #gets rid of parentheses
-    rating = movie.find("span", class_="ipl-rating-star__rating").text
-    csv_writer.writerow([title, released, rating])
+pages = 5
+
+for page_num in range (1, pages+1):
+    congress = requests.get(f"https://www.loc.gov/search/?q=cats&sp={page_num}").text
+    soup = BeautifulSoup(congress, "lxml")
+    
+    for item in soup.find_all("li", class_="item"):
+        # These are the two straightforward elements to find
+        title = item.find("span", class_="item-description-title").a.text.strip()
+        hyperlink = item.find("span", class_="item-description-title").a["href"].strip()
+        
+        # These elements may or may not exist
+        try:
+            description = item.find("span", class_="item-description-abstract").text.strip()
+        except AttributeError:
+            description = "N/A"
+        
+        try:
+            date = item.find("li", class_="date").span.text.strip(": ")
+        except AttributeError:
+            date = "N/A"
+        
+        try:
+            contributor = item.find("li", class_="contributor").span.text.strip()
+        except AttributeError:
+            contributor = "N/A"
+        
+        
+        csv_writer.writerow([title, description, hyperlink, contributor, date])
+        print(title, description, hyperlink)
+
+csv_file.close()
